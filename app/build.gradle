@@ -1,4 +1,10 @@
 apply plugin: 'com.android.application'
+// apply plugin
+apply plugin: 'org.greenrobot.greendao'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
 
 android {
     compileSdkVersion 25
@@ -7,7 +13,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "image1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -15,30 +21,46 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
+        debug {
 
-    productFlavors{
-        flavor1{//自定义flavor1的参数
+
+        }
+    }
+    /*   flavorDimensions "default"
+    productFlavors {
+        flavor1 {//自定义flavor1的参数
+            dimension "default"
             applicationId "com.baronli.learn.mylearning1"
             minSdkVersion 15
             targetSdkVersion 25
-            versionCode 1
-            versionName "1.0"
+            versionName "image1
+            versionCode 1.0"
         }
-        flavor2{//在defaultConfig的基础上做修改
+        flavor2 {//在defaultConfig的基础上做修改
+            dimension "default"
             applicationIdSuffix ".mylearning2"//输出：com.z.q.flavor.flavor2
-            versionNameSuffix "-flavor2"//输出：1.0-flavor2
+            versionNameSuffix "-flavor2"//输出：image1.0-flavor2
         }
-    }
+    }*/
+}
+
+greendao {
+    schemaVersion 2  //版本
+    daoPackage 'com.baronli.learn.mylearning.data.dao' // 一般为app包名+生成文件的文件夹名
+    targetGenDir 'src/main/java' //生成文件路径
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:25.0.0'
     implementation 'com.android.support:design:25.0.0'
+    implementation 'com.android.support:support-annotations:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:0.5'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
-    compile 'org.junit.jupiter:junit-jupiter-api'
+    androidTestImplementation 'com.android.support:support-annotations:27.1.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    // GreenDao
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
 }

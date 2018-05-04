@@ -3,6 +3,7 @@
     package="com.baronli.learn.mylearning">
 
     <application
+        android:name=".app.APP"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,6 +20,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".animation.AnimationActivity" />
+        <activity android:name=".broadcast.SendBroadCastActivity" />
+
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="baron.button" />
+                <action android:name="baron.button2" />
+                <action android:name="baron.button3" />
+
+                <category android:name="baron.category.one" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".data.db.DBShowActivity" />
+        <activity android:name=".skip.SkipActivity" />
+        <activity android:name=".skip.Skip2Activity" />
+        <activity android:name=".animation.Animation2Activity"></activity>
     </application>
 
 </manifest>

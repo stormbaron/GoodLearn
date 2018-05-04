@@ -1,5 +1,6 @@
 package com.baronli.learn.mylearning;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.baronli.learn.mylearning.animation.Animation2Activity;
+import com.baronli.learn.mylearning.animation.AnimationActivity;
+import com.baronli.learn.mylearning.broadcast.SendBroadCastActivity;
+import com.baronli.learn.mylearning.data.db.DBShowActivity;
+
+/**
+ * @author juli
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +49,45 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        initView();
+
+        //overridePendingTransition(R.anim.slide_in_left,R.anim.slide_in_right);
+    }
+
+    /**
+     *
+     */
+    public void initView() {
+        findViewById(R.id.animator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AnimationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.broadcast).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SendBroadCastActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.dbshow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DBShowActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.animator2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Animation2Activity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
